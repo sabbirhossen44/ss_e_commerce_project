@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {{-- <title>NobleUI Responsive Bootstrap 4 Dashboard Template</title> --}}
@@ -95,6 +96,9 @@
                                     <a href="{{route('category')}}" class="nav-link">Category</a>
                                 </li>
                                 <li class="nav-item">
+                                    <a href="{{route('subcategory')}}" class="nav-link">Sub Category</a>
+                                </li>
+                                <li class="nav-item">
                                     <a href="{{route('trash.list')}}" class="nav-link">Trash List</a>
                                 </li>
                             </ul>
@@ -104,19 +108,22 @@
                         <a class="nav-link" data-toggle="collapse" href="#advancedUI" role="button"
                             aria-expanded="false" aria-controls="advancedUI">
                             <i class="link-icon" data-feather="anchor"></i>
-                            <span class="link-title">Advanced UI</span>
+                            <span class="link-title">Products</span>
                             <i class="link-arrow" data-feather="chevron-down"></i>
                         </a>
                         <div class="collapse" id="advancedUI">
                             <ul class="nav sub-menu">
                                 <li class="nav-item">
-                                    <a href="pages/advanced-ui/cropper.html" class="nav-link">Cropper</a>
+                                    <a href="{{route('product')}}" class="nav-link">Add New Product</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/advanced-ui/owl-carousel.html" class="nav-link">Owl carousel</a>
+                                    <a href="pages/advanced-ui/owl-carousel.html" class="nav-link">Product List</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/advanced-ui/sweet-alert.html" class="nav-link">Sweet Alert</a>
+                                    <a href="{{route('brand')}}" class="nav-link">Brand</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="pages/advanced-ui/sweet-alert.html" class="nav-link">Variation</a>
                                 </li>
                             </ul>
                         </div>

@@ -4,69 +4,62 @@
         <div class="col-lg-8">
             <div class="card">
                 <div class="card-header">
-                    <h3>Category List</h3>
+                    <h3>Brand List</h3>
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered">
                         <tr>
-                            <td>SL</td>
-                            <td>Category Icon</td>
-                            <td>Category Name</td>
-                            <td>Action</td>
+                            <th>SL</th>
+                            <th>Brand Logo</th>
+                            <th>Brand Name</th>
+                            <th>Action</th>
                         </tr>
-                        @forelse ($categories as $sl => $category)
+                        @foreach ($brands as $sl => $brand)
                             <tr>
-                                <td>{{$categories->firstItem() + $sl}}</td>
+                                <td>{{$brands->firstItem() + $sl}}</td>
+                                <td>{{$brand->brand_name}}</td>
                                 <td>
-                                    <img src="{{asset('uploads/category/' . $category->photo)}}" alt="">
+                                    <img src="{{asset('uploads/brand/' . $brand->brand_logo)}}" alt="">
                                 </td>
-                                <td>{{$category->category_name}}</td>
                                 <td>
-                                    <a href="{{route('category.edit', $category->id)}}" class="btn btn-primary btn-icon">
+                                    <a href="{{route('brand.edit', $brand->id)}}" class="btn btn-primary btn-icon">
                                         <i class="link-icon" data-feather="edit"></i>
                                     </a>
                                     <a href="" class="btn btn-danger btn-icon delete_btn"
-                                        data-link="{{route('category.softdelte', $category->id)}}">
+                                        data-link="{{route('brand.delete', $brand->id)}}">
                                         <i class="link-icon" data-feather="trash"></i>
                                     </a>
                                 </td>
                             </tr>
-                        @empty
-                            <tr>
-                                <td colspan="4" class="text-center text-danger">No User Available</td>
-                            </tr>
-                        @endforelse
+                        @endforeach
                     </table>
-                    <div class="mt-2 d-flex justify-content-end">
-                        {{$categories->links()}}
-                    </div>
                 </div>
             </div>
         </div>
         <div class="col-lg-4">
             <div class="card">
                 <div class="card-header">
-                    <h3>Category Add</h3>
+                    <h3>Add New Brand</h3>
                 </div>
                 <div class="card-body">
-                    <form action="{{route('category.store')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('brand.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
-                            <label for="" class="form-label">Category Name</label>
-                            <input type="text" name="category_name" class="form-control" id="">
-                            @error('category_name')
+                            <label for="" class="form-label">Brand Name</label>
+                            <input type="text" name="brand_name" class="form-control" id="">
+                            @error('brand_name')
                                 <strong class="text-danger">{{$message}}</strong>
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="" class="form-label">Category Photo</label>
-                            <input type="file" name="category_photo" class="form-control" id="">
-                            @error('category_photo')
+                            <label for="" class="form-label">Brand Logo</label>
+                            <input type="file" name="brand_logo" class="form-control" id="">
+                            @error('brand_logo')
                                 <strong class="text-danger">{{$message}}</strong>
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <button type="submit" class="btn btn-primary">Add Category</button>
+                            <button type="submit" class="btn btn-primary">Add Brand</button>
                         </div>
                     </form>
                 </div>
@@ -75,23 +68,23 @@
     </div>
 @endsection
 @section('footer_script')
-    @if (session('category_ad'))
+    @if (session('brand_add'))
         <script>
             Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: "{{ session('category_ad') }}",
+                title: "{{ session('brand_add') }}",
                 showConfirmButton: false,
                 timer: 2000
             });
         </script>
     @endif
-    @if (session('soft_delete'))
+    @if (session('brand_delete'))
         <script>
             Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: "{{ session('soft_delete') }}",
+                title: "{{ session('brand_delete') }}",
                 showConfirmButton: false,
                 timer: 2000
             });
