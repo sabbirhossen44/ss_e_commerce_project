@@ -25,6 +25,12 @@
     <!-- endinject -->
     <!-- Layout styles -->
     <link rel="stylesheet" href="{{asset('backend')}}/assets/css/demo_1/style.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/css/selectize.default.min.css"
+        integrity="sha512-pTaEn+6gF1IeWv3W1+7X7eM60TFu/agjgoHmYhAfLEU8Phuf6JKiiE8YmsNC0aCgQv4192s4Vai8YZ6VNM6vyQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.css" rel="stylesheet">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{asset('backend')}}/assets/images/favicon.png" />
     <style>
@@ -32,6 +38,8 @@
         .swal2-modal .swal2-actions button.swal2-cancel {
             margin-right: 10px;
         }
+
+        
     </style>
     @yield('style')
 </head>
@@ -117,13 +125,16 @@
                                     <a href="{{route('product')}}" class="nav-link">Add New Product</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/advanced-ui/owl-carousel.html" class="nav-link">Product List</a>
+                                    <a href="{{route('product.list')}}" class="nav-link">Product List</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{route('brand')}}" class="nav-link">Brand</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/advanced-ui/sweet-alert.html" class="nav-link">Variation</a>
+                                    <a href="{{route('tags')}}" class="nav-link">Tags</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('variation')}}" class="nav-link">Variation</a>
                                 </li>
                             </ul>
                         </div>
@@ -654,6 +665,8 @@
     <script src="{{asset('backend')}}/assets/vendors/core/core.js"></script>
     <!-- endinject -->
     <!-- plugin js for this page -->
+    {{--
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
     <script src="{{asset('backend')}}/assets/vendors/chartjs/Chart.min.js"></script>
     <script src="{{asset('backend')}}/assets/vendors/jquery.flot/jquery.flot.js"></script>
     <script src="{{asset('backend')}}/assets/vendors/jquery.flot/jquery.flot.resize.js"></script>
@@ -666,6 +679,12 @@
     <script src="{{asset('backend')}}/assets/js/template.js"></script>
     <!-- endinject -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/js/selectize.min.js"
+        integrity="sha512-IOebNkvA/HZjMM7MxL0NYeLYEalloZ8ckak+NDtOViP7oiYzG5vn6WVXyrJDiJPhl4yRdmNAG49iuLmhkUdVsQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.js"></script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
     <!-- custom js for this page -->
     <script src="{{asset('backend')}}/assets/js/dashboard.js"></script>
     <script src="{{asset('backend')}}/assets/js/datepicker.js"></script>

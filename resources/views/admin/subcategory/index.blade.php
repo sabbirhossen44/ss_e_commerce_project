@@ -4,7 +4,7 @@
         <div class="col-lg-8">
             <div class="row">
                 @foreach ($categories as $category)
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 mt-3">
                         <div class="card">
                             <div class="card-header">
                                 <h6>{{$category->category_name}}</h6>
