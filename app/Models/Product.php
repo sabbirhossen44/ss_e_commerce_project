@@ -14,4 +14,10 @@ class Product extends Model
     public function pro_to_sub(){
         return $this->belongsTo(subCategory::class, 'subcategory_id');
     }
+    public function pro_to_br(){
+        return $this->belongsTo(Brand::class, 'brand_id');
+    }
+    public function pro_to_tag(){
+        return $this->belongsTo(Tag::class, 'tags');
+    }
 }

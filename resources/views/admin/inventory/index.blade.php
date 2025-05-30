@@ -3,8 +3,9 @@
     <div class="row">
         <div class="col-lg-8">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between">
                     <h4>{{$product->product_name}}</h4>
+                    <a href="{{route('product.list')}}" class="btn btn-primary">Product List</a>
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered">
@@ -88,6 +89,17 @@
                 position: "top-end",
                 icon: "success",
                 title: "{{ session('inventory_add') }}",
+                showConfirmButton: false,
+                timer: 2000
+            });
+        </script>
+    @endif
+    @if (session('inventory_increment'))
+        <script>
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "{{ session('inventory_increment') }}",
                 showConfirmButton: false,
                 timer: 2000
             });

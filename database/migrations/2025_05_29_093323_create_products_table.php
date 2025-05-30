@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('price');
             $table->integer('discount')->nullable();
             $table->integer('after_discount');
-            $table->integer('tags')->nullable();
+            $table->string('tags')->nullable();
             $table->string('short_desc')->nullable();
             $table->longText('long_desc')->nullable();
             $table->longText('addi_info')->nullable();

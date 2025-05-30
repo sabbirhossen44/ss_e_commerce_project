@@ -56,9 +56,13 @@ Route::get('/product', [ProductController::class, 'product'])->name('product');
 Route::post('/getsubcategory', [ProductController::class, 'getsubcategory'])->name('getsubcategory');
 Route::post('/product/store', [ProductController::class, 'product_store'])->name('product.store');
 Route::get('/product/list', [ProductController::class, 'product_list'])->name('product.list');
+Route::get('/product/edit/{id}', [ProductController::class, 'product_edit'])->name('product.edit');
+Route::post('/product/update/{id}', [ProductController::class, 'product_update'])->name('product.update');
+Route::get('/product/delete/{id}', [ProductController::class, 'product_delete'])->name('product.delete');
 Route::post('/product/getstatus', [ProductController::class, 'getstatus'])->name('getstatus');
 Route::post('/product/discount50', [ProductController::class, 'discount50']);
 Route::post('/product/discount30', [ProductController::class, 'discount30']);
+Route::delete('/ajax-gallery-image-delete/{id}', [ProductController::class, 'ajaxDeleteGalleryImage']);
 
 
 // brand
