@@ -140,28 +140,12 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#forms" role="button" aria-expanded="false"
-                            aria-controls="forms">
+                        <a class="nav-link" data-toggle="collapse" href="{{route('offers')}}">
                             <i class="link-icon" data-feather="inbox"></i>
-                            <span class="link-title">Forms</span>
-                            <i class="link-arrow" data-feather="chevron-down"></i>
+                            <span class="link-title">Offers</span>
+                            {{-- <i class="link-arrow" data-feather="chevron-down"></i> --}}
                         </a>
-                        <div class="collapse" id="forms">
-                            <ul class="nav sub-menu">
-                                <li class="nav-item">
-                                    <a href="pages/forms/basic-elements.html" class="nav-link">Basic Elements</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/forms/advanced-elements.html" class="nav-link">Advanced Elements</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/forms/editors.html" class="nav-link">Editors</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/forms/wizard.html" class="nav-link">Wizard</a>
-                                </li>
-                            </ul>
-                        </div>
+                        
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#charts" role="button" aria-expanded="false"
@@ -301,9 +285,9 @@
                     </li>
                     <li class="nav-item nav-category">Docs</li>
                     <li class="nav-item">
-                        <a href="https://www.nobleui.com/html/documentation/docs.html" target="_blank" class="nav-link">
-                            <i class="link-icon" data-feather="hash"></i>
-                            <span class="link-title">Documentation</span>
+                        <a href="{{route('web.info')}}" class="nav-link">
+                            <i class="link-icon" data-feather="sliders"></i>
+                            <span class="link-title">Web Info</span>
                         </a>
                     </li>
                 </ul>

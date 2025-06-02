@@ -5,12 +5,14 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\OffersController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VariationController;
+use App\Http\Controllers\WebInfoController;
 use App\Models\Brand;
 use Illuminate\Support\Facades\Route;
 
@@ -92,5 +94,19 @@ Route::get('/inventory/{id}', [InventoryController::class, 'inventory'])->name('
 Route::Post('/inventory/store/{id}', [InventoryController::class, 'inventory_store'])->name('inventory.store');
 Route::get('/inventory/delete/{id}', [InventoryController::class, 'inventory_delete'])->name('inventory.delete');
 
+// offers
+Route::get('/offers', [OffersController::class, 'offers'])->name('offers');
+
+
+
+// web-info
+Route::get('/webInfo', [WebInfoController::class, 'web_info'])->name('web.info');
+Route::get('/addwebinfo', [WebInfoController::class, 'add_webinfo'])->name('add.webinfo');
+Route::post('/webinfo/store', [WebInfoController::class, 'webinfo_store'])->name('webinfo.store');
+Route::get('/webinfo/view/{id}', [WebInfoController::class, 'webinfo_view'])->name('webinfo.view');
+Route::get('/webinfo/edit/{id}', [WebInfoController::class, 'webinfo_edit'])->name('webinfo.edit');
+Route::get('/webinfo/delete/{id}', [WebInfoController::class, 'webinfo_delete'])->name('webinfo.delete');
+Route::post('/webinfo/update/{id}', [WebInfoController::class, 'webinfo_update'])->name('webinfo.update');
+Route::post('/webinfostatus', [WebInfoController::class, 'webinfostatus']);
 
 require __DIR__ . '/auth.php';
