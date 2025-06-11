@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->id();
+            $table->string('logo');
+            $table->string('title');
+            $table->string('off_title');
+            $table->date('time');
+            $table->string('photo');
+            $table->integer('offer50');
+            $table->integer('offer30');
             $table->timestamps();
         });
     }

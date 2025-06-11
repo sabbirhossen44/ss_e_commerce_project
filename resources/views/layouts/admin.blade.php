@@ -140,7 +140,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="{{route('offers')}}">
+                        <a class="nav-link" href={{route('offers')}}>
                             <i class="link-icon" data-feather="inbox"></i>
                             <span class="link-title">Offers</span>
                             {{-- <i class="link-arrow" data-feather="chevron-down"></i> --}}

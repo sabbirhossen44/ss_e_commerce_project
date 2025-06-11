@@ -1834,15 +1834,35 @@
                         <h3 class="title">New Arrival Collection</h3>
                     </div>
                     <div class="discount-end-time-wrap mb-50">
-                        <img src="img/images/discount_end_img.jpg" alt="">
+                        @php
+                            $offer50_photo = public_path('uploads/offers/' . $offer_50->photo)
+                        @endphp
+                        @if (file_exists($offer50_photo) && $offer_50->photo)
+                            <img src="{{asset('uploads/offers/' . $offer_50->photo)}}"
+                                style="white:100%; height: 891px; object-fit: cover; border: 1px solid #f2f2f2;" alt="">
+                        @else
+                            <img src="img/images/discount_end_img.jpg" alt="">
+                        @endif
                         <div class="content">
                             <div class="icon">
-                                <img src="{{asset('uploads/webinfo/'. $web_info->icon)}}" alt="">
+                                @php
+                                    $offer50_logo = public_path('uploads/offers/' . $offer_50->logo)
+                                @endphp
+                                @if (file_exists($offer50_logo) && $offer_50->logo)
+                                    <img src="{{asset('uploads/offers/' . $offer_50->logo)}}"
+                                        style="width: 40px; border-radius: 50%; object-fit: cover;" alt="">
+                                @else
+                                    <img src="{{asset('uploads/webinfo/' . $web_info->icon)}}"
+                                        style="width: 40px; border-radius: 50%; object-fit: cover;" alt="">
+                                @endif
                             </div>
-                            <h2>Cyber Monday</h2>
-                            <span>Super Offer TO 50% OFF</span>
-                            <div class="coming-time" data-countdown="2021/9/21"></div>
-                            <a href="shop-sidebar.html" class="btn">shop now</a>
+                            <h2>{{$offer_50->title}}</h2>
+                            <span>{{$offer_50->off_title}}</span>
+                            <div class="coming-time" data-countdown="{{$offer_50->time}}"></div>
+                            @php
+                                $product50 = App\Models\Product::where('discount50', 1)->first();
+                            @endphp
+                            <a href="{{route('shopdetails', $product50->slug)}}" class="btn">shop now</a>
                         </div>
                     </div>
                 </div>

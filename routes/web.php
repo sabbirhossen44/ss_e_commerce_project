@@ -96,6 +96,8 @@ Route::get('/inventory/delete/{id}', [InventoryController::class, 'inventory_del
 
 // offers
 Route::get('/offers', [OffersController::class, 'offers'])->name('offers');
+Route::post('/offers50/update', [OffersController::class, 'offer50'])->name('offer50');
+Route::post('/offers30/update', [OffersController::class, 'offer30'])->name('offer30');
 
 
 
@@ -108,5 +110,9 @@ Route::get('/webinfo/edit/{id}', [WebInfoController::class, 'webinfo_edit'])->na
 Route::get('/webinfo/delete/{id}', [WebInfoController::class, 'webinfo_delete'])->name('webinfo.delete');
 Route::post('/webinfo/update/{id}', [WebInfoController::class, 'webinfo_update'])->name('webinfo.update');
 Route::post('/webinfostatus', [WebInfoController::class, 'webinfostatus']);
+
+// frontend
+Route::get('/shopdetails/{slug}', [FrontendController::class, 'shopdetails'])->name('shopdetails');
+// Route::get('/shopdetails', [FrontendController::class, 'shopdetails'])->name('shopdetails');
 
 require __DIR__ . '/auth.php';
