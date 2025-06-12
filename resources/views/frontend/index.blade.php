@@ -1856,13 +1856,28 @@
                                         style="width: 40px; border-radius: 50%; object-fit: cover;" alt="">
                                 @endif
                             </div>
-                            <h2>{{$offer_50->title}}</h2>
-                            <span>{{$offer_50->off_title}}</span>
+                            <h2 style="background-color: white">{{$offer_50->title}}</h2>
+                            <span style="background-color: white">{{$offer_50->off_title}}</span>
                             <div class="coming-time" data-countdown="{{$offer_50->time}}"></div>
                             @php
+                                use Illuminate\Support\Carbon;
                                 $product50 = App\Models\Product::where('discount50', 1)->first();
+                                $offer50 = !empty($product50) && !empty($offer_50->time) && Carbon::now()->lte(Carbon::parse($offer_50->time));
                             @endphp
-                            <a href="{{route('shopdetails', $product50->slug)}}" class="btn">shop now</a>
+                            @if ($product50)
+                                @if ($offer50)
+                                    <a style="background-color: white" href="{{route('shopdetails', $product50->slug)}}"
+                                        class="btn">shop now</a>
+                                @else
+                                    <a href="javascript:void(0)"
+                                        style="background-color: white; pointer-events: none; opacity: 0.5;" class="btn">
+                                        Offer Ended
+                                    </a>
+                                @endif
+                            @else
+                                <a class="btn">Shop Now</a>
+                            @endif
+
                         </div>
                     </div>
                 </div>
@@ -2043,6 +2058,8 @@
             <div class="row align-items-center">
                 <div class="col-xl-7 col-lg-7 order-0 order-lg-2">
                     <div class="h7-discount-img">
+                        {{-- $offer_30 --}}
+                        {{-- <img src="{{asset('uploads/offers/'.$offer_30->logo)}}" alt=""> --}}
                         <img src="img/images/h7_discount_img.png" alt="">
                         <div class="voucher-code">
                             <h6>super voucher</h6>
@@ -2052,10 +2069,41 @@
                 </div>
                 <div class="col-xl-5 col-lg-5">
                     <div class="discount-content text-left">
-                        <div class="icon mb-15"><img src="img/icon/s_discount_icon.png" alt=""></div>
-                        <span>STOCK IS LIMITED</span>
-                        <h2>Winter Collection Season Sale upto 30%</h2>
-                        <a href="shop-sidebar.html" class="btn">shop now</a>
+                        <div class="icon mb-15 w-full ">
+                            {{-- <img src="img/icon/s_discount_icon.png" alt=""> --}}
+                            @php
+                                $offer30_logo = public_path('uploads/offers/' . $offer_30->logo)
+                            @endphp
+                            @if ($offer_30->logo && file_exists($offer30_logo))
+                                <img src="{{asset('uploads/offers/' . $offer_30->logo)}}"
+                                    style="width: 65px; border-radius: 50%; object-fit: cover;" alt="">
+                            @else
+                                <img src="img/icon/s_discount_icon.png"
+                                    style="width: 40px; border-radius: 65%; object-fit: cover;" alt="">
+                            @endif
+                        </div>
+                        <span>{{$offer_30->title}}</span>
+                        <h2>{{$offer_30->off_title}}</h2>
+                        @php
+                            $product30 = App\Models\Product::where('discount30', 1)->first();
+                            $offerValid = !empty($product30) && !empty($offer_30->time) && Carbon::now()->lte(Carbon::parse($offer_30->time));
+                        @endphp
+
+                        @if (!empty($product30))
+                            @if ($offerValid)
+                                <a href="{{ route('shopdetails', $product30->slug) }}" style="background-color: white;" class="btn">
+                                    Shop Now
+                                </a>
+                            @else
+                                <a href="javascript:void(0)" style="background-color: white; pointer-events: none; opacity: 0.5;"
+                                    class="btn">
+                                    Offer Ended
+                                </a>
+                            @endif
+                        @else
+                            <a class="btn">Shop Now</a>
+                        @endif
+
                     </div>
                 </div>
             </div>

@@ -8,12 +8,13 @@ use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\OffersController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\ShopPageController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VariationController;
 use App\Http\Controllers\WebInfoController;
-use App\Models\Brand;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontendController::class, 'home'])->name('home');
@@ -114,5 +115,13 @@ Route::post('/webinfostatus', [WebInfoController::class, 'webinfostatus']);
 // frontend
 Route::get('/shopdetails/{slug}', [FrontendController::class, 'shopdetails'])->name('shopdetails');
 // Route::get('/shopdetails', [FrontendController::class, 'shopdetails'])->name('shopdetails');
+
+
+// shop
+Route::get('/shop', [ShopController::class, 'shop'])->name('shop');
+
+// shop_pages
+Route::get('/shoppage', [ShopPageController::class, 'shoppage'])->name('shoppage');
+Route::post('/shop/store', [ShopPageController::class, 'shop_store'])->name('shop.store');
 
 require __DIR__ . '/auth.php';

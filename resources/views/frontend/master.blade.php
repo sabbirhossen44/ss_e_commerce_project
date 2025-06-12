@@ -15,21 +15,23 @@
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
-    <link rel="stylesheet" href="css/bootstrap-datepicker.min.css">
-    <link rel="stylesheet" href="css/swiper-bundle.min.css">
-    <link rel="stylesheet" href="css/jquery-ui.min.css">
-    <link rel="stylesheet" href="css/nice-select.css">
-    <link rel="stylesheet" href="css/jarallax.css">
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/slick.css">
-    <link rel="stylesheet" href="css/default.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="{{asset('frontend/css/bootstrap.min.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{asset('frontend/css/animate.min.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/magnific-popup.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/jquery.mCustomScrollbar.min.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/bootstrap-datepicker.min.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/swiper-bundle.min.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/jquery-ui.min.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/nice-select.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/jarallax.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/flaticon.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/slick.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/default.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
+    @yield('style')
+    <link rel="stylesheet" href="{{asset('frontend/css/responsive.css')}}">
 </head>
 
 <body>
@@ -127,10 +129,10 @@
                                 </div>
                                 <div class="navbar-wrap main-menu d-none d-lg-flex">
                                     <ul class="navigation">
-                                        <li class="active menu-item-has-children has--mega--menu"><a href="#">Home</a>
+                                        <li class="menu-item-has-children has--mega--menu"><a href="{{route('home')}}">Home</a>
                                         </li>
-                                        <li class="has--mega--menu"><a href="#">Shop</a>
-                                            <ul class="mega-menu">
+                                        <li class="has--mega--menu"><a href="{{route('shop')}}">Shop</a>
+                                            {{-- <ul class="mega-menu">
                                                 <li class="mega-menu-wrap">
                                                     <ul class="mega-menu-col">
                                                         <li class="mega-title"><a href="shop.html">SHOP PAGES</a></li>
@@ -169,7 +171,7 @@
                                                         </li>
                                                     </ul>
                                                 </li>
-                                            </ul>
+                                            </ul> --}}
                                         </li>
                                         <li><a href="about-us.html">About Us</a></li>
                                         <li class="menu-item-has-children"><a href="#">blog</a>
@@ -472,7 +474,8 @@
                     <div class="col-lg-6">
                         <div class="copyright-text">
                             <p>&copy; 2025 <a href="{{route('home')}}">Sabbir Hossen</a>. All Rights Reserved | Ph
-                                {{$web_info->number}}</p>
+                                {{$web_info->number}}
+                            </p>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -488,23 +491,24 @@
 
 
     <!-- JS here -->
-    <script src="js/vendor/jquery-3.5.0.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/isotope.pkgd.min.js"></script>
-    <script src="js/imagesloaded.pkgd.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="js/bootstrap-datepicker.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery.countdown.min.js"></script>
-    <script src="js/swiper-bundle.min.js"></script>
-    <script src="js/jarallax.min.js"></script>
-    <script src="js/slick.min.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="js/nav-tool.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+    <script src="{{asset('frontend/js/vendor/jquery-3.5.0.min.js')}}"></script>
+    <script src="{{asset('frontend/js/popper.min.js')}}"></script>
+    <script src="{{asset('frontend/js/bootstrap.min.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+    <script src="{{asset('frontend/js/isotope.pkgd.min.js')}}"></script>
+    <script src="{{asset('frontend/js/imagesloaded.pkgd.min.js')}}"></script>
+    <script src="{{asset('frontend/js/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{asset('frontend/js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+    <script src="{{asset('frontend/js/bootstrap-datepicker.min.js')}}"></script>
+    <script src="{{asset('frontend/js/jquery.nice-select.min.js')}}"></script>
+    <script src="{{asset('frontend/js/jquery.countdown.min.js')}}"></script>
+    <script src="{{asset('frontend/js/swiper-bundle.min.js')}}"></script>
+    <script src="{{asset('frontend/js/jarallax.min.js')}}"></script>
+    <script src="{{asset('frontend/js/slick.min.js')}}"></script>
+    <script src="{{asset('frontend/js/wow.min.js')}}"></script>
+    <script src="{{asset('frontend/js/nav-tool.js')}}"></script>
+    <script src="{{asset('frontend/js/plugins.js')}}"></script>
+    <script src="{{asset('frontend/js/main.js')}}"></script>
 </body>
 
 </html>

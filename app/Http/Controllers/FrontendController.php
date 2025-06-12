@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Offers;
+use App\Models\Product;
+use App\Models\Size;
 use App\Models\WebInfo;
 use Illuminate\Http\Request;
 
@@ -20,6 +22,11 @@ class FrontendController extends Controller
         ]);
     }
     public function shopdetails($slug){
-        return view('frontend.shopdetails');
+        $product = Product::where('slug', $slug)->first();
+        $sizes = Size::all();
+        return view('frontend.shopdetails',[
+            'product' => $product,
+            'sizes' => $sizes,
+        ]);
     }
 }
