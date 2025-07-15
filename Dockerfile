@@ -23,18 +23,19 @@ RUN apt-get update && apt-get install -y \
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Copy project files
-COPY . .
+# Copy existing application directory contents
+COPY . /var/www/html
 
-# Update Apache root to /public
+# Set document root to /public
 RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|' /etc/apache2/sites-available/000-default.conf
 
-# Set permissions
+# Give Apache permission to Laravel folders
 RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 755 /var/www/html/storage
+    && chmod -R 755 /var/www/html/storage \
+    && chmod -R 755 /var/www/html/bootstrap/cache
 
-# Expose port
+# Expose port 80
 EXPOSE 80
 
-# Start Apache server
+# Run Apache
 CMD ["apache2-foreground"]
