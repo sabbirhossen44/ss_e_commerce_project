@@ -28,18 +28,15 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <input type="checkbox" {{$content->status}}
-                                    data-id="{{$content->id}}"
-                                    value="{{$content->status}}"
-                                    name="" class="status" data-toggle="toggle" id="">
+                                    <input type="checkbox" {{$content->status == 1 ? 'checked' : ''}} data-id="{{$content->id}}"
+                                        name="" class="status" data-toggle="toggle" id="" value="{{$content->status}}">
                                 </td>
                                 <td>
-                                    
-                                    <a href="" class="btn btn-secondary btn-icon">
+
+                                    <a href="{{route('shop_page.edit', $content->id)}}" class="btn btn-secondary btn-icon">
                                         <i data-feather="edit"></i>
                                     </a>
-                                    <a href="" class="btn btn-danger btn-icon delete_btn"
-                                        data-link="">
+                                    <a href="" class="btn btn-danger btn-icon delete_btn" data-link="{{route('shop.page.delete', $content->id)}}">
                                         <i data-feather="trash"></i>
                                     </a>
                                 </td>
@@ -80,13 +77,87 @@
         </div>
     </div>
 @endsection
+
 @section('footer_script')
+    <script>
+        $('.status').change(function () {
+            var product_id = $(this).attr('data-id');
+            var status = $(this).is(':checked') ? 1 : 0;
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type: 'POST',
+                url: '/shop/getstatus',
+                data: {
+                    'product_id': product_id,
+                    'status': status
+                },
+                success: function (data) {
+
+                }
+            });
+        });
+        $('.delete_btn').click(function (e) {
+            e.preventDefault();
+            var link = $(this).data('link');
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: "btn btn-success",
+                    cancelButton: "btn btn-danger"
+                },
+                buttonsStyling: false
+            });
+            swalWithBootstrapButtons.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Yes, delete it!",
+                cancelButtonText: "No, cancel!",
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    swalWithBootstrapButtons.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success"
+                    });
+                    setTimeout(() => {
+                        window.location.href = link;
+                    }, 1000);
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire({
+                        title: "Cancelled",
+                        text: "Your imaginary file is safe :)",
+                        icon: "error"
+                    });
+                }
+            });
+        })
+    </script>
     @if (session('shoppage_store'))
         <script>
             Swal.fire({
                 position: "top-end",
                 icon: "success",
                 title: "{{ session('shoppage_store') }}",
+                showConfirmButton: false,
+                timer: 2000
+            });
+        </script>
+    @endif
+    @if (session('delete'))
+        <script>
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "{{ session('delete') }}",
                 showConfirmButton: false,
                 timer: 2000
             });

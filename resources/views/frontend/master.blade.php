@@ -295,8 +295,8 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <form>
-                        <input type="text" placeholder="Search here...">
-                        <button><i class="flaticon-search"></i></button>
+                        <input type="text" id="search_input" placeholder="Search here..." value="{{@$_GET['search_input']}}">
+                        <button class="search_btn"><i class="flaticon-search"></i></button>
                     </form>
                 </div>
             </div>
@@ -508,7 +508,17 @@
     <script src="{{asset('frontend/js/wow.min.js')}}"></script>
     <script src="{{asset('frontend/js/nav-tool.js')}}"></script>
     <script src="{{asset('frontend/js/plugins.js')}}"></script>
+    @yield('footer_script')
     <script src="{{asset('frontend/js/main.js')}}"></script>
+    <script>
+        $('.search_btn').click(function(e){
+            e.preventDefault();
+            var search_input =  $('#search_input').val();
+            var link = "{{route('shop')}}"+"?search_input="+search_input;
+            window.location.href = link;
+        })
+    </script>
+    
 </body>
 
 </html>

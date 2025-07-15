@@ -123,5 +123,20 @@ Route::get('/shop', [ShopController::class, 'shop'])->name('shop');
 // shop_pages
 Route::get('/shoppage', [ShopPageController::class, 'shoppage'])->name('shoppage');
 Route::post('/shop/store', [ShopPageController::class, 'shop_store'])->name('shop.store');
+Route::post('/shop/getstatus', [ShopPageController::class, 'shop_Pagestatus']);
+Route::get('/shoppage/edit/{id}', [ShopPageController::class, 'shop_page_edit'])->name('shop_page.edit');
+Route::post('/shop/update/{id}', [ShopPageController::class, 'shop_update'])->name('shop.update');
+Route::get('/shop/delete/{id}', [ShopPageController::class, 'shop_page_delete'])->name('shop.page.delete');
+
+
+
+
+
+
+
+
+
+
+
 
 require __DIR__ . '/auth.php';
