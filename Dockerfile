@@ -26,18 +26,18 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Copy project files
 COPY . .
 
-# Install PHP dependencies
+# Run Composer Install
 RUN composer install --no-dev --optimize-autoloader
 
-# Set Apache document root to public
+# Apache serve public/ folder
 RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|' /etc/apache2/sites-available/000-default.conf
 
-# Set permissions
+# Fix Permissions
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html/storage \
     && chmod -R 755 /var/www/html/bootstrap/cache
 
-# Expose port 80
+# Expose Port
 EXPOSE 80
 
 # Start Apache
